@@ -7,7 +7,7 @@ namespace WFCRUD
     public partial class frmInstructor : Form
     {
         private readonly int? _instructorId;
-
+        EFProjectContext db = new EFProjectContext();
         public frmInstructor(int? instructorId = null)
         {
             InitializeComponent();
@@ -42,8 +42,7 @@ namespace WFCRUD
 
         private void LoadInstructorData(int id)
         {
-            using (var db = new EFProjectContext())
-            {
+            
                 var instructor = db.Instructors.AsNoTracking().FirstOrDefault(i => i.Ins_Id == id);
                 if (instructor != null)
                 {
@@ -53,7 +52,7 @@ namespace WFCRUD
                     txtPhone.Text = instructor.Ins_Phone;
                     comboDepartment.SelectedValue = instructor.Dept_Id ?? 0;
                 }
-            }
+            
         }
         private void comboIns_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,8 +71,7 @@ namespace WFCRUD
             //    return;
             //}
 
-            using (var db = new EFProjectContext())
-            {
+           
                 var newInstructor = new Instructor
                 {
                     Ins_Fname = txtFname.Text,
@@ -85,13 +83,9 @@ namespace WFCRUD
                 db.Instructors.Add(newInstructor);
                 db.SaveChanges();
                 MessageBox.Show("Instructor added successfully!");
-                txtId.Clear();
-                txtFname.Clear();
-                txtLname.Clear();
-                txtPhone.Clear();
-                comboDepartment.SelectedIndex = -1;
+                ClearFields();
                 Close();
-            }
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -99,8 +93,7 @@ namespace WFCRUD
             if (!int.TryParse(txtId.Text, out int id))
                 return;
 
-            using (var db = new EFProjectContext())
-            {
+           
                 var instructor = db.Instructors.Find(id);
                 if (instructor != null)
                 {
@@ -110,11 +103,7 @@ namespace WFCRUD
                     instructor.Dept_Id = (int?)comboDepartment.SelectedValue;
                     db.SaveChanges();
                     MessageBox.Show("Instructor updated successfully!");
-                    txtId.Clear();
-                    txtFname.Clear();
-                    txtLname.Clear();
-                    txtPhone.Clear();
-                    comboDepartment.SelectedIndex = -1;
+                    ClearFields();
                     Close();
 
                 }
@@ -122,7 +111,7 @@ namespace WFCRUD
                 {
                     MessageBox.Show("Instructor not found!");
                 }
-            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -135,8 +124,7 @@ namespace WFCRUD
                 if (MessageBox.Show($"Are you sure you want to delete {txtFname.Text} {txtLname.Text}?",
                     "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    using (var db = new EFProjectContext())
-                    {
+                    
                         // Check if the instructor is referenced as Dept_Manager
                         var departments = db.Departments.Where(d => d.Dept_Manager == id).ToList();
                         if (departments.Any()) // If instructor is managing any department
@@ -162,13 +150,21 @@ namespace WFCRUD
                         {
                             MessageBox.Show("Instructor not found!");
                         }
-                    }
+                    
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+        }
+        private void ClearFields()
+        {
+            txtId.Clear();
+            txtFname.Clear();
+            txtLname.Clear();
+            txtPhone.Clear();
+            comboDepartment.SelectedIndex = -1;
         }
 
     }

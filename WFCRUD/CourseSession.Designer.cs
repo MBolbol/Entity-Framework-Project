@@ -119,22 +119,26 @@
             // 
             // btnDelete
             // 
+            btnDelete.BackColor = Color.FromArgb(192, 0, 0);
+            btnDelete.ForeColor = Color.White;
             btnDelete.Location = new Point(547, 380);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 61;
             btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
+            btnUpdate.BackColor = Color.FromArgb(0, 0, 192);
+            btnUpdate.ForeColor = Color.White;
             btnUpdate.Location = new Point(315, 380);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(94, 29);
             btnUpdate.TabIndex = 60;
             btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
             // txtId
@@ -155,12 +159,14 @@
             // 
             // btnInsert
             // 
+            btnInsert.BackColor = Color.Green;
+            btnInsert.ForeColor = Color.White;
             btnInsert.Location = new Point(108, 380);
             btnInsert.Name = "btnInsert";
             btnInsert.Size = new Size(94, 29);
             btnInsert.TabIndex = 57;
             btnInsert.Text = "Insert";
-            btnInsert.UseVisualStyleBackColor = true;
+            btnInsert.UseVisualStyleBackColor = false;
             btnInsert.Click += btnInsert_Click;
             // 
             // txtCrs_Id
