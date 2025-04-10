@@ -95,12 +95,14 @@
             // 
             // btnInsert
             // 
+            btnInsert.BackColor = Color.Green;
+            btnInsert.ForeColor = Color.White;
             btnInsert.Location = new Point(46, 363);
             btnInsert.Name = "btnInsert";
             btnInsert.Size = new Size(94, 29);
             btnInsert.TabIndex = 8;
             btnInsert.Text = "Insert";
-            btnInsert.UseVisualStyleBackColor = true;
+            btnInsert.UseVisualStyleBackColor = false;
             btnInsert.Click += btnInsert_Click_1;
             // 
             // lblDeptId
@@ -121,22 +123,26 @@
             // 
             // btnUpdate
             // 
+            btnUpdate.BackColor = Color.FromArgb(0, 0, 192);
+            btnUpdate.ForeColor = Color.White;
             btnUpdate.Location = new Point(253, 363);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(94, 29);
             btnUpdate.TabIndex = 21;
             btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
+            btnDelete.BackColor = Color.FromArgb(192, 0, 0);
+            btnDelete.ForeColor = Color.White;
             btnDelete.Location = new Point(485, 138);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 27;
             btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // lblManager
